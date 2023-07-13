@@ -43,7 +43,11 @@
                      ;; we need to ensure this hook will be executed before
                      ;; Deploy's attempt to load libraries:
                      (1+ most-positive-fixnum)) ()
-  (when *libexec-path*
-    (deploy:status 0 "Adding ~A to cffi:*foreign-library-directories*.")
-    (push *libexec-path*
-          cffi:*foreign-library-directories*)))
+  (cond
+    (*libexec-path*
+     (deploy:status 0 "Adding ~A to cffi:*foreign-library-directories*.")
+     (push *libexec-path*
+           cffi:*foreign-library-directories*))
+    (t
+     (deploy:status 0 "~S is NIL"
+                    '*libexec-path*))))
