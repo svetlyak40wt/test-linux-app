@@ -21,7 +21,7 @@
   :in-order-to ((test-op (test-op "test-brew-app-tests"))))
 
 
-(deploy:define-hook (:deploy ignore-system-libraries) (directory)
+(deploy:define-hook (:deploy ignore-system-libraries) ()
   (loop for lib in (deploy:list-libraries)
         when (eql (cffi:foreign-library-type lib)
                   :system)
@@ -39,7 +39,7 @@
   (uiop:getenv "LIBEXEC_PATH"))
 
 
-(define-hook (:boot restore-path-to-libexec) ()
+(deploy:define-hook (:boot restore-path-to-libexec) ()
   (when *libexec-path*
     (deploy:status 0 "Adding ~A to cffi:*foreign-library-directories*.")
     (push *libexec-path*
