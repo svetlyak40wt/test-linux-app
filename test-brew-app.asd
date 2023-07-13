@@ -45,7 +45,8 @@
                      (1+ most-positive-fixnum)) ()
   (cond
     (*libexec-path*
-     (deploy:status 0 "Adding ~A to cffi:*foreign-library-directories*.")
+     (deploy:status 0 "Adding ~A to cffi:*foreign-library-directories*."
+                    *libexec-path*)
      (push *libexec-path*
            cffi:*foreign-library-directories*))
     (t
