@@ -30,16 +30,19 @@
           and collect (or (deploy:library-path lib)
                           (deploy:library-name lib)) into ignored-libs
         finally (when ignored-libs
-                  (deploy:status 0 "Ignoring these system libraries:")
+                  (deploy:status 1 "Ignoring these system libraries:")
                   (loop for lib in ignored-libs
-                        do (deploy:status 1 "~A" lib)))))
+                        do (deploy:status 2 "~A" lib)))))
 
 
 (defvar *libexec-path*
   (uiop:getenv "LIBEXEC_PATH"))
 
 
-(deploy:define-hook (:boot restore-path-to-libexec) ()
+(deploy:define-hook (:boot restore-path-to-libexec
+                     ;; we need to ensure this hook will be executed before
+                     ;; Deploy's attempt to load libraries:
+                     (1+ most-positive-fixnum)) ()
   (when *libexec-path*
     (deploy:status 0 "Adding ~A to cffi:*foreign-library-directories*.")
     (push *libexec-path*
