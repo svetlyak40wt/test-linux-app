@@ -9,5 +9,8 @@
                               "ASDF"
                               "REPL"
                               "HTTP"))
+  (0.2.0 2023-07-15
+         "* Updated."
+   )
   (0.1.0 2023-02-05
          "* Initial version."))
