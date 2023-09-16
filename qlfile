@@ -2,3 +2,10 @@ dist ultralisp http://dist.ultralisp.org/
 
 # This branch is what I use in my Emacs.
 github slynk svetlyak40wt/sly :branch patches
+
+github alien-works-delivery borodust/alien-works-delivery
+github distignore borodust/distignore
+
+# Without this recent system I've got error:
+# The symbol "BODGE-BLOB-SYSTEM-P" is not external in the BODGE-BLOBS-SUPPORT package.
+github bodge-blobs-support borodust/bodge-blobs-support

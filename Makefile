@@ -1,12 +1,16 @@
-all: bin/test-brew-app
+all: test-linux-app
 
 .qlot:
 	qlot install
 
-bin/test-brew-app: .qlot *.asd src/*
-	qlot exec ros run \
+test-linux-app: .qlot *.asd src/*
+	rm -fr *.deb test-linux-app
+	SBCL_HOME=/home/art/.local/sbcl/lib/sbcl/ \
+                ~/.local/sbcl/bin/sbcl \
 		--eval '(require "asdf")' \
-		--eval '(ql:quickload "deploy")' \
-		--eval '(ql:quickload "test-brew-app")' \
-		--eval '(asdf:make "test-brew-app")' \
+		--eval '(load "~/quicklisp/setup.lisp")' \
+		--eval '(push "./" asdf:*central-registry*)' \
+		--eval '(ql:quickload "test-linux-app-deb")' \
+		--eval '(asdf:make "test-linux-app-deb")' \
 		--quit
+

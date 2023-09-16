@@ -5,8 +5,20 @@
 ("ultralisp" .
  (:class qlot/source/dist:source-dist
   :initargs (:distribution "http://dist.ultralisp.org/" :%version :latest)
-  :version "20230714195000"))
+  :version "20230821223001"))
 ("slynk" .
  (:class qlot/source/github:source-github
   :initargs (:repos "svetlyak40wt/sly" :ref nil :branch "patches" :tag nil)
   :version "github-030a8441f57f7e0bb401570935e741dfd9edfb83"))
+("alien-works-delivery" .
+ (:class qlot/source/github:source-github
+  :initargs (:repos "borodust/alien-works-delivery" :ref nil :branch nil :tag nil)
+  :version "github-a5fde03f05242edf638610fb9898b7fbbd3110c1"))
+("distignore" .
+ (:class qlot/source/github:source-github
+  :initargs (:repos "borodust/distignore" :ref nil :branch nil :tag nil)
+  :version "github-4efd5f38993abb98d7a2e8c86aaded6afa903bd1"))
+("bodge-blobs-support" .
+ (:class qlot/source/github:source-github
+  :initargs (:repos "borodust/bodge-blobs-support" :ref nil :branch nil :tag nil)
+  :version "github-8c9def5608b0364ed41433621faac82a2202067d"))
