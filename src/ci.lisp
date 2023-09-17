@@ -1,4 +1,4 @@
-(uiop:define-package #:test-brew-app-ci/ci
+(uiop:define-package #:test-linux-app-ci/ci
   (:use #:cl)
   (:import-from #:40ants-ci/jobs/linter)
   (:import-from #:40ants-ci/jobs/run-tests
@@ -7,7 +7,7 @@
                 #:build-docs)
   (:import-from #:40ants-ci/workflow
                 #:defworkflow))
-(in-package #:test-brew-app-ci/ci)
+(in-package #:test-linux-app-ci/ci)
 
 
 (defworkflow linter
@@ -16,16 +16,16 @@
   :on-pull-request t
   :cache t
   :jobs ((40ants-ci/jobs/linter:linter
-          :asdf-systems ("test-brew-app"
-                         "test-brew-app-docs"
-                         "test-brew-app-tests"))))
+          :asdf-systems ("test-linux-app"
+                         "test-linux-app-docs"
+                         "test-linux-app-tests"))))
 
 (defworkflow docs
   :on-push-to "master"
   :by-cron "0 10 * * 1"
   :on-pull-request t
   :cache t
-  :jobs ((build-docs :asdf-system "test-brew-app-docs")))
+  :jobs ((build-docs :asdf-system "test-linux-app-docs")))
 
 
 (defworkflow ci
@@ -34,7 +34,7 @@
   :on-pull-request t
   :cache t
   :jobs ((run-tests
-          :asdf-system "test-brew-app"
+          :asdf-system "test-linux-app"
           :lisp ("sbcl-bin"
                  ;; Issue https://github.com/roswell/roswell/issues/534
                  ;; is still reproduces on 2023-02-06:
