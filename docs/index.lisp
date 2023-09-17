@@ -36,7 +36,7 @@
   )
 
 
-(defsection @index (:title "test-linux-app - An application to test cl-linuxer"
+(defsection @index (:title "test-linux-app - An application to test linux-packaging system."
                     :ignore-words ("JSON"
                                    "HTTP"
                                    "TODO"
@@ -45,6 +45,7 @@
                                    "ASDF:PACKAGE-INFERRED-SYSTEM"
                                    "ASDF"
                                    "40A"
+                                   "SBCL"
                                    "API"
                                    "URL"
                                    "RPM"
@@ -65,7 +66,7 @@
 
 (defsection @usage (:title "Usage")
   "
-This repository contains a demo application showing how to build debian package for Common Lisp application. It was created as part of this video: https://www.youtube.com/watch?v=lGS4sr6AzKw about [linux-packaging](https://gitlab.com/ralt/linux-packaging) ASDF system.
+This repository contains a demo application showing how to build debian package for Common Lisp application. It was created as part of [this video](https://www.youtube.com/watch?v=lGS4sr6AzKw) about [linux-packaging](https://gitlab.com/ralt/linux-packaging) ASDF system.
 
 To build a deb package you need SBCL built with with enabled static compilation feature and fpm (requirement of linux-packaging).
 
